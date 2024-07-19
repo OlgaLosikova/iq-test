@@ -1,0 +1,75 @@
+:root {
+  font-family: "PT Serif", serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #fff;
+  background-color: #fff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  font-size: 32px;
+  color: #ffc700;
+  margin-bottom: 0;
+  margin-bottom: 150px;
+}
+
+button {
+  font-family: "Merriweather", serif;
+  border-radius: 20px;
+  width: 189px;
+  font-size: 14px;
+  font-weight: 500;
+  height: 41px;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  background: radial-gradient(50% 50% at 50% 50%, #ffc700 0%, #ffc700 100%);
+  border: none;
+}
+
+button:disabled {
+  box-shadow: 0px 4px 10px 0px #00000040 inset;
+  background: #dadada;
+}
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
