@@ -1,10 +1,12 @@
-<script setup></script>
+<script setup>
+
+</script>
 
 <template>
   <article class="first-page">
-    <p class="paragraph-big">Пройдите точный и быстрый</p>
+    <h2 class="paragraph-big">Пройдите точный и быстрый</h2>
     <h1>тест на определение IQ</h1>
-    <button>пройти тест</button>
+    <router-link to="/test"><button>пройти тест</button></router-link>
     <p class="paragraph-small">
       <span>и получите рекомендации по развитию своего интеллекта</span> и
       улучшению финансового благосостояния и личной жизни
@@ -21,13 +23,13 @@
         alt="quotes_left"
         class="quotes_left"
       />
-      <p class="paragraph-big">
+      <h2 class="paragraph-big">
         <span>
           Профессиональный IQ-тест позволяет не только определить коэффициент
           вашего интеллекта, но и выработать список рекомендаций для повышения
           этого показателя.
         </span>
-      </p>
+      </h2>
       <img
         src="../assets/svg/quotes_right.svg"
         alt="quotes_right"
@@ -37,7 +39,7 @@
   </article>
   <article class="third-page">
     <div class="third-page-wrapper">
-      <p class="paragraph-medium">
+      <h3 class="paragraph-medium">
         Также по результатам теста
         <span class="upper-case">вы получите</span> подробные
         <span class="upper-case">советы </span>по определению наиболее
@@ -46,7 +48,7 @@
           >для вашего типа <span>интеллекта</span> сферы деятельности,</span
         >
         которая принесет вам скорейший финансовый результат.
-      </p>
+      </h3>
       <img src="../assets/325-01.png" alt="brain" class="brain-img" /><button>
         пройти тест
       </button>
@@ -58,12 +60,14 @@
       результаты вы
       <span>сможете использовать всю жизнь.</span>
     </p>
-    <p class="paragraph-medium paragraph-bg">
+    <h3 class="paragraph-medium paragraph-bg">
       Профессиональная интерпретация и детально проработанные рекомендации
       позволят вам качественно изменить все аспекты своей жизни: от финансового
       до любовного.
-    </p>
-    <button class="button">пройти тест</button>
+    </h3>
+    <router-link to="/test"
+      ><button class="button">пройти тест</button></router-link
+    >
     <div class="copyright">
       <img src="../assets/svg/copyright.svg" alt="copyright" /><span
         class="year"

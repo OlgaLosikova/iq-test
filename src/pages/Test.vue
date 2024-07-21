@@ -8,7 +8,7 @@ const setInputChecked = () => {
   isChecked.value = true;
 };
 const setNextStep = () => {
-  step.value <= 8 && step.value++;
+  step.value <= 10 && step.value++;
   console.log(step.value);
   isChecked.value = false;
 };
@@ -18,20 +18,26 @@ const setNextStep = () => {
   <section class="section">
     <Progressbar :stepValue="step" />
     <form>
-      <div v-if="step < 4 || step === 6 || step === 8" class="form-container">
+      <div
+        v-if="step < 4 || step === 6 || step === 8 || step === 9"
+        class="form-container"
+      >
         <p class="form-title">{{ data[step].title }}</p>
-        <div
-          class="input-container"
-          v-for="answer in data[step].answers"
-          :key="answer"
-        >
+        <img
+          v-if="step === 9"
+          src="../assets/polygon.png"
+          alt="polygon"
+          class="polygon"
+        />
+        <div class="input-container" v-for="answer in data[step].answers">
           <label @click="setInputChecked"
             ><input
               class="form-radio"
               type="radio"
               name="answers"
               :checked="isChecked"
-            /><span class="custom-radio"></span> {{ answer }}</label
+            /><span :key="answer" class="custom-radio"></span>
+            {{ answer }}</label
           >
         </div>
       </div>
@@ -45,6 +51,7 @@ const setNextStep = () => {
             :checked="isChecked"
           />
           <span
+            :key="answer"
             @click="setInputChecked"
             class="square"
             v-for="answer in data[step].answers"
@@ -52,13 +59,28 @@ const setNextStep = () => {
           ></span>
         </div>
       </div>
-      <div v-else-if="step === 7">
+      <div v-else-if="step === 7 || step === 10">
         <p class="form-title">{{ data[step].title }}</p>
         <div class="img-container">
-          <img v-for="answer in data[step].answers" :src="answer" alt="hjfjh" />
+          <img
+            :key="answer"
+            @click="setInputChecked"
+            v-for="answer in data[step].answers"
+            :src="answer"
+            alt="answer-image"
+          />
         </div>
       </div>
+      <div v-else>
+        <p class="result-title">Обработка результатов</p>
+        <img src="../assets/svg/loader.svg" alt="" />
+        <p class="result-text">Определение стиля мышления...........</p>
+        <p class="result-text">
+          ........................................................
+        </p>
+      </div>
       <button
+        v-if="step <= 10"
         type="button"
         :disabled="!isChecked"
         @click="setNextStep"
@@ -76,11 +98,12 @@ const setNextStep = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  min-height: 522px;
 }
 .form-container {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
 .form-title {
   font-size: 20px;
@@ -95,7 +118,7 @@ const setNextStep = () => {
 .input-container {
   background-color: rgb(242, 243, 243, 0.15);
   min-height: 50px;
-  width: 320px;
+  min-width: 320px;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -110,16 +133,19 @@ const setNextStep = () => {
 label {
   cursor: pointer;
   display: flex;
+  padding-right: 5px;
+  align-items: center;
 }
 .custom-radio {
   display: inline-block;
-  width: 20px;
+  min-width: 20px;
   height: 20px;
   border: 1px solid #fff;
   border-radius: 10px;
   margin-left: 35px;
-  margin-right: 39px;
+  margin-right: 15px;
   position: relative;
+ flex-grow: 2;
 }
 .custom-radio::before {
   content: "";
@@ -157,13 +183,13 @@ label {
 }
 .img-container {
   display: grid;
-justify-items: center;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+  justify-items: center;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
 }
 .img-container img:first-child {
   grid-column-start: 2;
-  grid-column-end: 4;
- 
+  grid-column-end: 5;
+  margin-bottom: 23px;
 }
 .img-container img:nth-child(2) {
   grid-row-start: 2;
@@ -176,5 +202,28 @@ justify-items: center;
 }
 .img-container img:nth-child(5) {
   grid-row-start: 2;
+}
+.img-container img:nth-child(6) {
+  grid-row-start: 2;
+}
+.result-title {
+  margin-top: 49px;
+  margin-bottom: 33px;
+  font-size: 23px;
+  line-height: 30.47px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+.result-text {
+  font-size: 14px;
+  line-height: 18.55px;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+.polygon{
+  margin-bottom: 19px;
+  width: 173px;
+  height: 115px;
+  align-self: center;
 }
 </style>

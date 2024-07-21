@@ -1,5 +1,5 @@
 <script setup>
-import { computed, defineProps } from "vue";
+import {  defineProps } from "vue";
 defineProps({
   stepValue: Number,
 });
@@ -8,7 +8,7 @@ defineProps({
 <template>
   <div class="container">
     <div class="progress-container">
-      <div class="progress-value" :style="`width:${26 * stepValue}px`"></div>
+      <div class="progress-value" :style="`width:${22 * (stepValue+1)}px`"></div>
     </div>
   </div>
 </template>

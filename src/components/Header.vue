@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import router from "../main.js";
+let currentPath = ref(router.currentRoute.value.fullPath);
+console.log(currentPath.value);
+</script>
 
 <template>
   <header class="header">
@@ -7,7 +12,12 @@
       alt="burger-menu"
       class="header-menu"
     /><img src="../assets/rain_bk3.png" alt="brain" class="header-logo" />
-    <p class="header-title">тест на определение IQ</p>
+    <p v-if="currentPath === '/test'" class="header-title">
+      тест на определение IQ
+    </p>
+    <p v-else-if="currentPath === '/result'" class="header-title result">
+      готово!
+    </p>
   </header>
 </template>
 
@@ -27,11 +37,13 @@
 .header-menu {
   margin: 17px 9px 14px 15px;
 }
-.header-title{
-    font-family: "Yeseva One", serif;
-    margin: 0 0 0 9px;
-    color: #FFC700;
-    padding-top: 18px;
-
+.header-title {
+  font-family: "Yeseva One", serif;
+  margin: 0 0 0 9px;
+  color: #ffc700;
+  padding-top: 18px;
+}
+.result{
+  font-size: 20px;
 }
 </style>

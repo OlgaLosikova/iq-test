@@ -16,5 +16,5 @@ const router = createRouter({
     { path: "/result", name: "Result", component: Result },
   ],
 });
-
+export default router;
 createApp(App).use(router).mount("#app");

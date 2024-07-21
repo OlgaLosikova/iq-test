@@ -66,7 +66,7 @@
   {
     "title": "Какое определение, по-Вашему, более подходит к этому геометрическому изображению:",
     "answers": [
-      "../assets/polygon.png",
+      
       "Оно остроконечное",
       "Оно устойчиво",
       "Оно находится в состянии равновесия"
@@ -75,12 +75,12 @@
   {
     "title": "Вставьте подходящее число",
     "answers": [
-      "../assets/insert-number.png",
-      "../assets/svg/34.svg",
-      "../assets/svg/36.svg",
-      "../assets/svg/53.svg",
-      "../assets/svg/66.svg",
-      "../assets/svg/42.svg"
+      "/src/assets/insert-number.png",
+      "/src/assets/svg/34.svg",
+      "/src/assets/svg/36.svg",
+      "/src/assets/svg/53.svg",
+      "/src/assets/svg/66.svg",
+      "/src/assets/svg/42.svg"
     ]
   }
 ]
