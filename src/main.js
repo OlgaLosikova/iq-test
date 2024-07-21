@@ -3,15 +3,17 @@ import "./style.css";
 import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import Home from "./pages/Home.vue";
-import TestStep1 from "./pages/TestStep1.vue";
+import Test from "./pages/Test.vue";
 import Menu from "./pages/Menu.vue";
+import Result from "./pages/Result.vue";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", name: "Home", component: Home },
-    { path: "/teststep1", name: "TestStep1", component: TestStep1 },
+    { path: "/test", name: "Test", component: Test },
     { path: "/menu", name: "Menu", component: Menu },
+    { path: "/result", name: "Result", component: Result },
   ],
 });
 

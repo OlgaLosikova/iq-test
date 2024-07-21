@@ -1,15 +1,20 @@
-<script setup></script>
+<script setup>
+import { computed, defineProps } from "vue";
+defineProps({
+  stepValue: Number,
+});
+</script>
 
 <template>
   <div class="container">
     <div class="progress-container">
-      <div class="progress-value"></div>
+      <div class="progress-value" :style="`width:${26 * stepValue}px`"></div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.container{
+.container {
   padding-top: 17px;
 }
 .progress-container {
@@ -23,7 +28,6 @@
 }
 .progress-value {
   background-color: #3bde7c;
-  width: 36px;
   height: 11px;
   top: 63px;
   left: 30px;
