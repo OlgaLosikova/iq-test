@@ -10,7 +10,7 @@ import Result from "./pages/Result.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", name: "Home", component: Home },
+    { path: "/iq-test", name: "Home", component: Home },
     { path: "/test", name: "Test", component: Test },
     { path: "/menu", name: "Menu", component: Menu },
     { path: "/result", name: "Result", component: Result },

@@ -114,10 +114,10 @@ const goToResult = () => {
   position: relative;
 }
 form {
-  height: 57vh;
+  height: 52vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 .form-container {

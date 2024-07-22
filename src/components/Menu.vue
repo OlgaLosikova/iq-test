@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from "vue";
 defineProps({
   isOpen: Boolean,
   setIsOpen: Function,
@@ -10,7 +9,7 @@ defineProps({
   <div v-if="isOpen" class="menu">
     <nav class="menu-container">
       <ul>
-        <router-link to="/"><li @click="setIsOpen">главная</li></router-link>
+        <router-link to="/iq-test"><li @click="setIsOpen">главная</li></router-link>
         <li>информация о тесте</li>
         <router-link to="/test"
           ><li @click="setIsOpen">пройти тест</li></router-link
