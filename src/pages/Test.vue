@@ -49,22 +49,22 @@ const goToResult = () => {
           >
         </div>
       </div>
-      <div v-else-if="step === 4 || step === 5">
-        <div class="square-container">
-          <label v-for="answer in data[step].answers" @click="setInputChecked">
-            <input
-              class="form-radio"
-              type="radio"
-              name="squares"
-              :checked="isChecked" />
-            <span
-              :key="answer"
-              class="square"
-              :style="`background-color:${answer}`"
-            ></span
-          ></label>
-        </div>
+
+      <div v-else-if="step === 4 || step === 5" class="square-container">
+        <label v-for="answer in data[step].answers" @click="setInputChecked">
+          <input
+            class="form-radio"
+            type="radio"
+            name="squares"
+            :checked="isChecked" />
+          <span
+            :key="answer"
+            class="square"
+            :style="`background-color:${answer}`"
+          ></span
+        ></label>
       </div>
+
       <div v-else-if="step === 7 || step === 10">
         <img v-if="step === 7" src="../assets/figures.png" alt="figurs" />
         <div v-else-if="step === 10">
@@ -118,6 +118,7 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
 }
 .form-container {
   display: flex;
@@ -209,6 +210,7 @@ label {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
   justify-items: center;
+  max-width: 500px;
 }
 .img-container {
   display: flex;
@@ -253,5 +255,15 @@ hr {
   height: 41px;
   padding-top: 6px;
   box-sizing: border-box;
+}
+@media (min-width: 500px) {
+  form {
+    height: 76vh;
+    justify-content: flex-start;
+    margin-top: 150px;
+  }
+  .button {
+    bottom: 20%;
+  }
 }
 </style>

@@ -1,6 +1,10 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import axios from "axios";
+const timer = reactive({
+  minutes: 10,
+  seconds: 0,
+});
 const isGaveResult = ref(false);
 const result = reactive({});
 const fetchResult = async () => {
@@ -12,9 +16,22 @@ const fetchResult = async () => {
     console.log(err.message);
   }
 };
+const countDown = () => {
+  if (timer.minutes > 0) {
+    if (timer.seconds === 0) {
+      timer.seconds = 59;
+      timer.minutes--;
+    } else if (timer.seconds <= 59 && timer.seconds > 0) timer.seconds--;
+  } else if (timer.minutes === 0 && timer.seconds !== 0) timer.seconds--;
+  else clearInterval();
+};
+onMounted(() => {
+  setInterval(countDown, 1000);
+});
 </script>
 
 <template>
+ 
   <article v-if="!isGaveResult" class="article">
     <h3>ваш результат рассчитан:</h3>
     <p class="pargraph-small">
@@ -28,7 +45,13 @@ const fetchResult = async () => {
       звонку с вашего мобильного телефона
     </p>
     <p class="timer-title">Звоните скорее, запись доступна всего</p>
-    <p class="timer-text">10:00 <span>минут</span></p>
+    <p class="timer-text">
+      {{
+        `${timer.minutes}:${
+          timer.seconds < 10 ? "0" + timer.seconds : timer.seconds
+        }`
+      }}<span> минут</span>
+    </p>
 
     <div class="call-button" @click="fetchResult">
       <img class="call-icon" src="../assets/svg/call.svg" alt="call" /><span
@@ -84,6 +107,7 @@ const fetchResult = async () => {
   align-items: center;
   min-height: 522px;
   overflow: hidden;
+  position: relative;
 }
 .article:before {
   content: "";
@@ -93,13 +117,13 @@ const fetchResult = async () => {
   width: 165px;
   height: 185px;
   left: -25px;
-  bottom: 22px;
+  bottom: 162px;
 }
 .article:after {
   content: "";
   background: url(../assets/lightning_PNG9.png);
   position: absolute;
-  bottom: 0;
+  bottom: 132px;
   right: -105px;
   width: 165px;
   height: 185px;
@@ -168,6 +192,8 @@ h2 {
   text-transform: uppercase;
   color: #ffffff80;
   letter-spacing: 3px;
+  position: absolute;
+  bottom: 0;
 }
 .table {
   display: table;
@@ -186,4 +212,9 @@ h2 {
     max-width: 90%;
   }
 }
+@media (min-width:500px) {
+  .article{
+  height: 95vh;
+
+}}
 </style>

@@ -1,13 +1,13 @@
 <script setup>
-import { defineProps } from 'vue';
 defineProps({
   currentPath:String,
+  setIsOpen:Function,
 })
 </script>
 
 <template>
   <header class="header">
-    <img
+    <img @click="setIsOpen"
       src="../assets/svg/menu.svg"
       alt="burger-menu"
       class="header-menu"
@@ -36,6 +36,7 @@ defineProps({
 }
 .header-menu {
   margin: 17px 9px 14px 15px;
+  cursor: pointer;
 }
 .header-title {
   font-family: "Yeseva One", serif;
