@@ -48,11 +48,7 @@
   {
     "title": "Выберите правильную фигуру из четырех пронумерованных.",
     "answers": [
-      "/src/assets/figures.png",
-      "/src/assets/svg/var1.svg",
-      "/src/assets/svg/var2.svg",
-      "/src/assets/svg/var3.svg",
-      "/src/assets/svg/var4.svg"
+      1,2,3,4
     ]
   },
   {
@@ -75,12 +71,7 @@
   {
     "title": "Вставьте подходящее число",
     "answers": [
-      "/src/assets/insert-number.png",
-      "/src/assets/svg/34.svg",
-      "/src/assets/svg/36.svg",
-      "/src/assets/svg/53.svg",
-      "/src/assets/svg/66.svg",
-      "/src/assets/svg/42.svg"
+      34,36,53,44,66,42
     ]
   }
 ]

@@ -1,16 +1,24 @@
 <script setup>
 import data from "../assets/data.json";
 import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import Progressbar from "../components/Progressbar.vue";
 const isChecked = ref(false);
 const step = ref(0);
+const router = useRouter();
+const route = useRoute();
 const setInputChecked = () => {
   isChecked.value = true;
 };
+
 const setNextStep = () => {
   step.value <= 10 && step.value++;
-  console.log(step.value);
   isChecked.value = false;
+  step.value === 11 && setTimeout(goToResult, 2000);
+};
+const goToResult = () => {
+  const redirectPath = route.query.redirect || "/result";
+  router.push(redirectPath);
 };
 </script>
 
@@ -18,11 +26,11 @@ const setNextStep = () => {
   <section class="section">
     <Progressbar :stepValue="step" />
     <form>
+      <p v-if="step <= 10" class="form-title">{{ data[step].title }}</p>
       <div
         v-if="step < 4 || step === 6 || step === 8 || step === 9"
         class="form-container"
       >
-        <p class="form-title">{{ data[step].title }}</p>
         <img
           v-if="step === 9"
           src="../assets/polygon.png"
@@ -42,33 +50,37 @@ const setNextStep = () => {
         </div>
       </div>
       <div v-else-if="step === 4 || step === 5">
-        <p class="form-title">{{ data[step].title }}</p>
         <div class="square-container">
-          <input
-            class="form-radio"
-            type="radio"
-            name="answers"
-            :checked="isChecked"
-          />
-          <span
-            :key="answer"
-            @click="setInputChecked"
-            class="square"
-            v-for="answer in data[step].answers"
-            :style="`background-color:${answer}`"
-          ></span>
+          <label v-for="answer in data[step].answers" @click="setInputChecked">
+            <input
+              class="form-radio"
+              type="radio"
+              name="squares"
+              :checked="isChecked" />
+            <span
+              :key="answer"
+              class="square"
+              :style="`background-color:${answer}`"
+            ></span
+          ></label>
         </div>
       </div>
       <div v-else-if="step === 7 || step === 10">
-        <p class="form-title">{{ data[step].title }}</p>
+        <img v-if="step === 7" src="../assets/figures.png" alt="figurs" />
+        <div v-else-if="step === 10">
+          <img src="../assets/insert-number.png" alt="insert-number" />
+          <hr />
+        </div>
         <div class="img-container">
-          <img
-            :key="answer"
-            @click="setInputChecked"
-            v-for="answer in data[step].answers"
-            :src="answer"
-            alt="answer-image"
-          />
+          <label @click="setInputChecked" v-for="answer in data[step].answers">
+            <input
+              class="form-radio"
+              type="radio"
+              name="answers"
+              :checked="isChecked"
+            />
+            <span class="white-squares" :key="answer">{{ answer }}</span>
+          </label>
         </div>
       </div>
       <div v-else>
@@ -99,6 +111,13 @@ const setNextStep = () => {
   flex-direction: column;
   align-items: center;
   min-height: 522px;
+  position: relative;
+}
+form {
+  height: 57vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .form-container {
   display: flex;
@@ -107,8 +126,8 @@ const setNextStep = () => {
 }
 .form-title {
   font-size: 20px;
-  margin-top: 101px;
-  margin-bottom: 41px;
+  margin-block-start: 0.8em;
+  margin-block-end: 0.8em;
 }
 .form-radio {
   font-size: 18px;
@@ -127,14 +146,18 @@ const setNextStep = () => {
   background-color: #ffc700;
 }
 .button {
-  margin-top: 152px;
-  margin-bottom: 25px;
+  position: absolute;
+  right: 0;
+  bottom: 23px;
+  left: 0;
+  margin: 0 auto;
 }
 label {
   cursor: pointer;
   display: flex;
   padding-right: 5px;
   align-items: center;
+  text-align: start;
 }
 .custom-radio {
   display: inline-block;
@@ -145,7 +168,7 @@ label {
   margin-left: 35px;
   margin-right: 15px;
   position: relative;
- flex-grow: 2;
+  flex-grow: 2;
 }
 .custom-radio::before {
   content: "";
@@ -167,13 +190,19 @@ label {
 .form-radio:checked + .square {
   border: 6px solid #ffc700;
 }
+.form-radio:checked + .white-squares {
+  border: 6px solid #ffc700;
+  padding-top: 0;
+}
 .input-container:has(> label > input:checked) {
   background-color: #ffc700;
+  box-sizing: border-box;
 }
 .square {
   display: inline-block;
   width: 75px;
   height: 75px;
+  box-sizing: border-box;
 }
 .square-container {
   display: grid;
@@ -182,30 +211,14 @@ label {
   justify-items: center;
 }
 .img-container {
-  display: grid;
+  display: flex;
   justify-items: center;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-top: 23px;
+  gap: 6px;
 }
-.img-container img:first-child {
-  grid-column-start: 2;
-  grid-column-end: 5;
-  margin-bottom: 23px;
-}
-.img-container img:nth-child(2) {
-  grid-row-start: 2;
-}
-.img-container img:nth-child(3) {
-  grid-row-start: 2;
-}
-.img-container img:nth-child(4) {
-  grid-row-start: 2;
-}
-.img-container img:nth-child(5) {
-  grid-row-start: 2;
-}
-.img-container img:nth-child(6) {
-  grid-row-start: 2;
-}
+
 .result-title {
   margin-top: 49px;
   margin-bottom: 33px;
@@ -220,10 +233,25 @@ label {
   letter-spacing: 0.05em;
   text-align: left;
 }
-.polygon{
+.polygon {
   margin-bottom: 19px;
   width: 173px;
   height: 115px;
   align-self: center;
+}
+hr {
+  width: 320px;
+  margin-top: 24px;
+  border: 4px solid rgb(242 243 243 / 15%);
+}
+.white-squares {
+  background-color: #fff;
+  color: #0d0c11;
+  font-size: 20px;
+  text-align: center;
+  width: 41px;
+  height: 41px;
+  padding-top: 6px;
+  box-sizing: border-box;
 }
 </style>

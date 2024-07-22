@@ -49,9 +49,9 @@
         >
         которая принесет вам скорейший финансовый результат.
       </h3>
-      <img src="../assets/325-01.png" alt="brain" class="brain-img" /><button>
+      <img src="../assets/325-01.png" alt="brain" class="brain-img" /><router-link to="/test"><button>
         пройти тест
-      </button>
+      </button></router-link>
     </div>
   </article>
   <article class="fourth-page">

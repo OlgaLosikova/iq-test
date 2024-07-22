@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from "vue";
-import router from "../main.js";
-let currentPath = ref(router.currentRoute.value.fullPath);
-console.log(currentPath.value);
+import { defineProps } from 'vue';
+defineProps({
+  currentPath:String,
+})
 </script>
 
 <template>
@@ -45,5 +45,7 @@ console.log(currentPath.value);
 }
 .result{
   font-size: 20px;
+  padding-top: 14px;
+  text-transform: uppercase;
 }
 </style>
