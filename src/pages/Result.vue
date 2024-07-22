@@ -176,6 +176,7 @@ h2 {
   border-radius: 5px;
   margin-bottom: 158px;
   z-index: 100;
+  cursor: pointer;
 }
 .call-icon {
   margin: 33px 18px 30px 15px;

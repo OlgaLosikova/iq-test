@@ -1,9 +1,11 @@
 <script setup>
-
+const makeScroll = () => {
+  window.scroll({ top: 0, left: 0, behavior: "smooth" });
+};
 </script>
 
 <template>
-  <article class="first-page">
+  <section class="first-page">
     <h2 class="paragraph-big">Пройдите точный и быстрый</h2>
     <h1>тест на определение IQ</h1>
     <router-link to="/test"><button>пройти тест</button></router-link>
@@ -11,12 +13,12 @@
       <span>и получите рекомендации по развитию своего интеллекта</span> и
       улучшению финансового благосостояния и личной жизни
     </p>
-    <div class="details-wrapper">
+    <div @click="makeScroll" class="details-wrapper">
       <img src="../assets/svg/arrow_up.svg" alt="arrow-up" />
       <p class="details-button">Подробнее</p>
     </div>
-  </article>
-  <article class="second-page">
+  </section>
+  <section class="second-page">
     <div class="second-page-wrapper">
       <img
         src="../assets/svg/quotes_left.svg"
@@ -36,8 +38,8 @@
         class="quotes_right"
       />
     </div>
-  </article>
-  <article class="third-page">
+  </section>
+  <section class="third-page">
     <div class="third-page-wrapper">
       <h3 class="paragraph-medium">
         Также по результатам теста
@@ -49,12 +51,14 @@
         >
         которая принесет вам скорейший финансовый результат.
       </h3>
-      <img src="../assets/325-01.png" alt="brain" class="brain-img" /><router-link to="/test"><button>
-        пройти тест
-      </button></router-link>
+      <img
+        src="../assets/325-01.png"
+        alt="brain"
+        class="brain-img"
+      /><router-link to="/test"><button>пройти тест</button></router-link>
     </div>
-  </article>
-  <article class="fourth-page">
+  </section>
+  <section class="fourth-page">
     <p class="paragraph-small">
       Прохождение теста займет у вас не более <span>12 минут</span>, а его
       результаты вы
@@ -74,7 +78,7 @@
         >2019</span
       >
     </div>
-  </article>
+  </section>
 </template>
 
 <style scoped>
@@ -117,8 +121,10 @@
   margin-bottom: 0;
 }
 .details-wrapper {
-  padding-top: 9%;
-  padding-bottom: 1%;
+  position: fixed;
+  margin: 0 auto;
+  bottom: 2%;
+  z-index: 1000;
 }
 .first-page {
   padding-left: 15px;
