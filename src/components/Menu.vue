@@ -27,7 +27,7 @@ defineProps({
 
 <style scoped>
 .menu {
-  z-index: 1000;
+  z-index: 1001;
   position: absolute;
   margin: auto;
   width: 320px;
