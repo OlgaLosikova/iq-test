@@ -4,7 +4,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import Home from "./pages/Home.vue";
 import Test from "./pages/Test.vue";
-import Menu from "./pages/Menu.vue";
 import Result from "./pages/Result.vue";
 
 const router = createRouter({
@@ -12,7 +11,6 @@ const router = createRouter({
   routes: [
     { path: "/iq-test", name: "Home", component: Home },
     { path: "/test", name: "Test", component: Test },
-    { path: "/menu", name: "Menu", component: Menu },
     { path: "/result", name: "Result", component: Result },
   ],
 });
